@@ -1,0 +1,74 @@
+---
+
+- name: add key for nginx repository
+  apt_key:
+    url: http://nginx.org/keys/nginx_signing.key
+  register: nginx_key_added
+
+- name: add nginx repository
+  apt_repository:
+    repo: "deb http://nginx.org/packages/mainline/debian/ {{ ansible_lsb.codename }} nginx"
+
+- name: debug codename
+  debug:
+    msg: "{{ ansible_lsb.codename }}"
+
+- name: install Nginx
+  apt:
+    name: nginx-light
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: create web directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: "u=rwx,g=r,o="
+  with_items:
+    - "{{ web_path_default }}"
+
+- name: configure nginx
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+
+- name: configure default vhost
+  template:
+    src: default.conf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: restart nginx
+
+- name: copy default website
+  copy:
+    src: index.html
+    dest: /var/www/default/index.html
+    owner: www-data
+    group: www-data
+    mode: "u=r,g=r,o="
+
+- name: enable default vhost
+  file:
+    src: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-enabled/default
+    owner: www-data
+    group: www-data
+    state: link
+  notify: restart nginx
+
+- name: add iptables rules for HTTP and HTTPS
+  iptables:
+    action: insert
+    chain: INPUT
+    ctstate: NEW
+    protocol: tcp
+    destination_port: "{{ item }}"
+    jump: ACCEPT
+  with_items:
+    - "{{ web_ports_http }}"
+    - "{{ web_ports_https }}"
+  tags: iptables
+  notify: save iptables rules
+
+- meta: flush_handlers
