@@ -9,10 +9,6 @@
   apt_repository:
     repo: "deb http://nginx.org/packages/mainline/debian/ {{ ansible_lsb.codename }} nginx"
 
-- name: debug codename
-  debug:
-    msg: "{{ ansible_lsb.codename }}"
-
 - name: install Nginx
   apt:
     name: nginx-light
