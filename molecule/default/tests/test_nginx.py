@@ -50,3 +50,9 @@ def test_default_web_enabled(host):
     assert default_web_enabled.is_symlink
     assert default_web_enabled.user == "www-data"
     assert default_web_enabled.group == "www-data"
+
+
+def test_gitea_socket(host):
+    command = "curl -kH 'Host: anarres.local' https://127.0.0.1/"
+    web = host.check_output(command)
+    assert "Hello world!" in web
