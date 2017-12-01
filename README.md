@@ -32,6 +32,10 @@ verification files.
 
 ## Dependencies
 
+You can manually clone the repos in your **roles_path** or with:
+
+`ansible-galaxy install -r requierements.yml`.
+
 * [anarres/anarres-common](https://git.hdg.sh/anarres/anarres-common)
 * [anarres/anarres-sec](https://git.hdg.sh/anarres/anarres-sec)
 * [anarres/anarres-letsencrypt](https://git.hdg.sh/anarres/anarres-letsencrypt)
