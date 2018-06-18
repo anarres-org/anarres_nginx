@@ -1,10 +1,10 @@
 server {
-	listen 80 default_server;
+	listen {{ web_ports_http }} default_server;
 	server_name _;
 	
 	# Necessary for Let's Encrypt Domain Name ownership validation
 	location /.well-known/acme-challenge/ {
-		root /var/www/letsencrypt;
+		root {{ web_path_letsencrypt }};
 		try_files $uri /dev/null =404;
 	}
 	
@@ -15,7 +15,7 @@ server {
 
 server {
 	server_name {{ domain }};
-	listen 443 ssl http2 default_server;
+	listen {{ web_ports_https }} ssl http2 default_server;
 
 	ssl_certificate /etc/letsencrypt/live/{{ domain }}/fullchain.pem;
 	ssl_certificate_key /etc/letsencrypt/live/{{ domain }}/privkey.pem;

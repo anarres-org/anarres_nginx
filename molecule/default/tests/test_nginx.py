@@ -48,8 +48,6 @@ def test_default_web_enabled(host):
     default_web_enabled = host.file("/etc/nginx/sites-enabled/default")
     assert default_web_enabled.exists
     assert default_web_enabled.is_symlink
-    assert default_web_enabled.user == "www-data"
-    assert default_web_enabled.group == "www-data"
 
 
 def test_gitea_socket(host):
