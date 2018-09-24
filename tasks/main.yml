@@ -9,7 +9,7 @@
   apt_repository:
     repo: "deb http://nginx.org/packages/mainline/debian/ {{ ansible_lsb.codename }} nginx"
 
-- name: Anstall Nginx
+- name: Install Nginx
   apt:
     name: nginx-light
 
