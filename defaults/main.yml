@@ -2,7 +2,7 @@
 
 ## nginx
 
-domain: anarres.local
+domain:
 
 nginx_processes: 'auto'
 web_ports_http: 80
