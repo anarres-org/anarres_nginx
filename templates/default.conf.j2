@@ -17,6 +17,8 @@ server {
 	server_name {{ domain }};
 	listen {{ web_ports_https }} ssl http2 default_server;
 
+	add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
 	ssl_certificate {{ ssl_certificate }};
 	ssl_certificate_key {{ ssl_certificate_key }};
 
