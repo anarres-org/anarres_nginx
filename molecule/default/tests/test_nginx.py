@@ -29,6 +29,18 @@ def test_nginx_conf(host):
     assert nginx_conf.contains("pid /run/nginx.pid;")
 
 
+def test_nginx_default_page(host):
+    nginx_conf = host.file("/var/www/default/index.html")
+    assert nginx_conf.exists
+    assert nginx_conf.contains("Hello world!")
+
+
+def test_nginx_robots_txt(host):
+    nginx_conf = host.file("/var/www/default/robots.txt")
+    assert nginx_conf.exists
+    assert nginx_conf.contains("Disallow: /")
+
+
 def test_default_web_conf(host):
     default_web_conf = host.file("/etc/nginx/sites-available/default")
     assert default_web_conf.exists

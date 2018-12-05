@@ -42,6 +42,14 @@
     group: www-data
     mode: "u=r,g=r,o="
 
+- name: Copy robots.txt file
+  copy:
+    src: robots.txt
+    dest: /var/www/default/robots.txt
+    owner: www-data
+    group: www-data
+    mode: "u=r,g=r,o="
+
 - name: Enable default vhost
   file:
     src: /etc/nginx/sites-available/default
