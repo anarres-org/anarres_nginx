@@ -46,7 +46,7 @@ def test_default_web_conf(host):
     default_web_conf = host.file("/etc/nginx/sites-available/default")
     assert default_web_conf.exists
     assert default_web_conf.contains("return 301 https://$host$request_uri;")
-    assert default_web_conf.mode = 0o640
+    assert default_web_conf.mode == 0o640
 
 
 def test_default_web_file(host):
