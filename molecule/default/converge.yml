@@ -52,4 +52,4 @@
 - name: Converge
   hosts: all
   roles:
-    - role: anarres-nginx
+    - role: anarres_nginx

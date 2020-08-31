@@ -15,11 +15,11 @@ These are the tested GNU/Linux distributions. Maybe it works on some other
 distributions too or just requieres a few changes.
 
 * [debian](https://www.debian.org/)
-	* stretch
+   * buster
 
 ## Requirements
 
-`sudo` and `python`.
+`sudo` and `python` in the target host(s).
 
 ## Role Variables
 
@@ -29,9 +29,8 @@ distributions too or just requieres a few changes.
 * `web_ports_https`: Web port for `nginx` to bind to for HTTPS connections.
 * `web_path`: Base webs path.
 * `web_path_letsencrypt`: Web path for letsencrypt, used to store ACME
-verification files.
+   verification files.
 * `web_path_default`: Default web path.
-
 
 ## Dependencies
 
@@ -39,19 +38,19 @@ You can manually clone the repos in your **roles_path** or with:
 
 `ansible-galaxy install -r requierements.yml`.
 
-* [anarres/anarres-common](https://git.hdg.sh/anarres/anarres-common)
-* [anarres/anarres-sec](https://git.hdg.sh/anarres/anarres-sec)
-* [anarres/anarres-letsencrypt](https://git.hdg.sh/anarres/anarres-letsencrypt)
+* [anarres/anarres_common](https://git.hdg.sh/anarres/anarres_common)
+* [anarres/anarres_sec](https://git.hdg.sh/anarres/anarres_sec)
+* [anarres/anarres_letsencrypt](https://git.hdg.sh/anarres/anarres_letsencrypt)
 
 ## Example playbook
 
 ```yaml
 - hosts: all
   roles:
-    - anarres-common
-    - anarres-sec
-    - anarres-letsencrypt
-    - anarres-nginx
+    - anarres_common
+    - anarres_sec
+    - anarres_letsencrypt
+    - anarres_nginx
 ```
 
 ## Testing
@@ -73,4 +72,4 @@ GPLv3
 
 ## Author Information
 
-m0wer: m0wer (at) autistici.org
+* m0wer: m0wer (at) autistici (dot) org
