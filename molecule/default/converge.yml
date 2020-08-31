@@ -45,7 +45,7 @@
   hosts: all
   gather_facts: true
   roles:
-    - role: letsencrypt-request
+    - role: letsencrypt_request
   vars:
     - domain: "{{ base_domain }}"
 
