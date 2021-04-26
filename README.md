@@ -2,7 +2,7 @@
 
 Ansible role to install, configure and launch Nginx.
 
-It is part of [anarres](https://git.hdg.sh/anarres/anarres), a playbook that
+It is part of [anarres](https://github.com/anarres-org/anarres), a playbook that
 uses a collection of roles to deploy a full-featured server. But it can be used
 and tested independently.
 
@@ -14,12 +14,18 @@ all bots from */*.
 These are the tested GNU/Linux distributions. Maybe it works on some other
 distributions too or just requieres a few changes.
 
-* [debian](https://www.debian.org/)
+* [Debian](https://www.debian.org/)
   * buster
+* [Ubuntu](https://ubuntu.com/)
+  * latest
 
 ## Requirements
 
-`sudo` and `python` in the target host(s).
+In your local machine:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Role Variables
 
@@ -34,13 +40,10 @@ distributions too or just requieres a few changes.
 
 ## Dependencies
 
-You can manually clone the repos in your **roles_path** or with:
+`sudo` and `python` in the target host(s).
 
-`ansible-galaxy install -r requierements.yml`.
-
-* [anarres/anarres_common](https://git.hdg.sh/anarres/anarres_common)
-* [anarres/anarres_sec](https://git.hdg.sh/anarres/anarres_sec)
-* [anarres/anarres_letsencrypt](https://git.hdg.sh/anarres/anarres_letsencrypt)
+* [anarres/anarres_letsencrypt](https://github.com/anarres-org/letsencrypt_request)
+  which is included as a submodule of this role.
 
 ## Example playbook
 
@@ -55,16 +58,23 @@ You can manually clone the repos in your **roles_path** or with:
 
 ## Testing
 
-To test the role you need [molecule](http://molecule.readthedocs.io/en/latest/)
-.
+To test the role you need [molecule](http://molecule.readthedocs.io/en/latest/),
+**vagrant**, **virtualbox** and some python requirements that can be installed wwith
+`pip install -r requirements-dev.txt`.
 
 ```bash
 molecule test
 ```
 
+or
+
+```bash
+make test
+```
+
 There is more documentation about the installation and configuration of the
 required tools at
-[wiki-testing](https://git.hdg.sh/anarres/anarres/wiki/testing).
+[Testing - Anarres documentation](https://anarres-org.github.io/anarres/testing/).
 
 ## License
 
