@@ -1,13 +1,13 @@
 server {
 	listen {{ web_ports_http }} default_server;
 	server_name _;
-	
+
 	# Necessary for Let's Encrypt Domain Name ownership validation
 	location /.well-known/acme-challenge/ {
 		root {{ web_path_letsencrypt }};
 		try_files $uri /dev/null =404;
 	}
-	
+
 	location / {
 		return 301 https://$host$request_uri;
 	}

@@ -6,7 +6,7 @@ It is part of [anarres](https://git.hdg.sh/anarres/anarres), a playbook that
 uses a collection of roles to deploy a full-featured server. But it can be used
 and tested independently.
 
-It deploys a "Hello world!" default page and a *robots.txt* file disallowing
+It deploys a “Hello world!” default page and a *robots.txt* file disallowing
 all bots from */*.
 
 ## Compatibility
@@ -15,7 +15,7 @@ These are the tested GNU/Linux distributions. Maybe it works on some other
 distributions too or just requieres a few changes.
 
 * [debian](https://www.debian.org/)
-   * buster
+  * buster
 
 ## Requirements
 
