@@ -1,5 +1,10 @@
 ---
 
+- name: Install gpg package
+  apt:
+    name: gpg
+    state: present
+
 - name: Add key for nginx repository
   apt_key:
     url: http://nginx.org/keys/nginx_signing.key
@@ -7,7 +12,7 @@
 
 - name: Add nginx repository
   apt_repository:
-    repo: "deb http://nginx.org/packages/{{       ansible_distribution | lower }} {{ ansible_distribution_release }} nginx"
+    repo: "deb http://nginx.org/packages/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} nginx"
 
 - name: Install Nginx
   apt:
