@@ -1,5 +1,12 @@
 ---
 
+- name: "[Pretask] Update apt cache"
+  hosts: all
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
 - name: "[Pretask] Install curl for testing"
   hosts: all
   gather_facts: true
@@ -16,6 +23,15 @@
     - web_path: /var/www
     - web_path_letsencrypt: "{{ web_path }}/letsencrypt"
   tasks:
+    - name: Add www-data group
+      group:
+        name: www-data
+        state: present
+    - name: Add www-data user
+      user:
+        name: www-data
+        group: www-data
+        state: present
     - name: Add group name ssl-cert for SSL certificates
       group:
         name: ssl-cert
