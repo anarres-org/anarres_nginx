@@ -9,6 +9,23 @@ and tested independently.
 It deploys a “Hello world!” default page and a *robots.txt* file disallowing
 all bots from */*.
 
+## Cloning this repository
+
+Since this repository has
+[git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules), after
+cloning the repository you'll have to
+
+```bash
+git submodule init
+git submodule update
+```
+
+Alternatively you can clone it using
+
+```bash
+git clone --recurse-submodules -j8 {repo_url}
+```
+
 ## Compatibility
 
 These are the tested GNU/Linux distributions. Maybe it works on some other
