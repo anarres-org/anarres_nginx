@@ -29,8 +29,6 @@ provisioner:
   options:
     become: true
     extra-vars: "{'testing': true, domain: 'anarres.local'}"
-  env:
-    ANSIBLE_ROLES_PATH: ../../roles
 verifier:
   name: testinfra
   options:
