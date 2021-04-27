@@ -26,6 +26,9 @@ lint: |
   flake8 --exclude roles,molecule,library
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      roles_path: ../../roles
   options:
     become: true
     extra-vars: "{'testing': true, domain: 'anarres.local'}"
