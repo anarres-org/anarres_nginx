@@ -22,8 +22,8 @@ platforms:
 lint: |
   set -e
   yamllint -c .yamllint .
-  ansible-lint --exclude molecule/ --exclude library/ --exclude .github/
-  flake8 --exclude roles,molecule,library
+  ansible-lint
+  flake8
 provisioner:
   name: ansible
   options:
